@@ -4,7 +4,7 @@ node {
 
      
   stage('Git-Checkout') {
-   git 'https://github.com/SaiCharanUppari/projectrepo.git'
+   git 'https://github.com/SaiCharanUppari/dockerrepo.git'
   }
     
  //def project_path="capstoneproject/capstoneproject/"
