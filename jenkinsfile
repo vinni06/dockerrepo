@@ -1,6 +1,11 @@
 node {
  try  {
   notify('Job Started') 
+  
+  environment {
+    registry = "charan253/capstoneproject"
+    registryCredential = 'charandockerhub'
+  }
 
      
   stage('Git-Checkout') {
@@ -31,6 +36,10 @@ node {
     
  stage('Docker-Stage-Deployment') {
    sh label: '', script: 'docker-compose up -d --build'
+  }
+  
+  stage('Pushing DockerImage to DockerHub') {
+   sh label: '', script: 'docker push $registry:$BUILD_NUMBER'
   }
    
    
