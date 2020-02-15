@@ -38,10 +38,11 @@ node {
    sh label: '', script: 'docker-compose up -d --build'
   }
   
+  /*
   stage('Pushing DockerImage to DockerHub') {
    sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
   }
-   
+  */
    
 //}	-----------dir end---------  
 
