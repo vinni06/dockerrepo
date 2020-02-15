@@ -7,53 +7,34 @@ node {
    git 'https://github.com/SaiCharanUppari/projectrepo.git'
   }
     
- def project_path="capstoneproject/capstoneproject/"
+ //def project_path="capstoneproject/capstoneproject/"
  
- dir(project_path) {
+// dir(project_path) {
     
-  stage('Maven-Clean') {
-   sh label: '', script: 'mvn clean'
-  }
-    
- stage('Maven-Compile') {
-   sh label: '', script: 'mvn compile'
-  }
-  
-   stage('Maven-Test') {
-   sh label: '', script: 'mvn test'
-  }
-  
-  stage('Sonar Analysis') {
-   withSonarQubeEnv('SonarQube') {
-        sh "mvn sonar:sonar"
-    }
-  }
-  /*
-  stage('Sonar - Quality Gate') {
-  	timeout(time: 1, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+  stage('Download package from JFrog') {
+            def server= Artifactory.server 'Artifactory'
+            def downloadSpec = """{
+            "files": [
+            {
+                "pattern": "capstoneproject/capstoneproject-0.0.1-SNAPSHOT.war",
+                "target": "."
             }
-  }
-  */
-   stage('Maven-Package') {
-   sh label: '', script: 'mvn package'
-  }
-  
-   stage('Archive-Artifacts') {
-   archiveArtifacts 'target/*.war'
+            ]
+            }"""
+        server.download(downloadSpec)
+    }
+    
+    stage('check') {
+    sh 'ls -a'
+    input "Continue?"
+    }
+    
+ stage('Docker-Stage-Deployment') {
+   sh label: '', script: 'docker-compose up -d --build'
   }
    
-   stage('Jfrog Artifacory Upload') {
-        def server= Artifactory.server 'Artifactory'
-                    def uploadSpec= """{
-                        "files": [{
-                        "pattern": "target/*.war",
-                        "target": "capstoneproject"}]
-                    }"""
-        server.upload(uploadSpec)
-        
-        }
-}  
+   
+//}	-----------dir end---------  
 
  notify('Job Completed')   
 } catch (err) {
