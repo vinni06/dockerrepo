@@ -17,7 +17,7 @@ node {
             "files": [
             {
                 "pattern": "capstoneproject/capstoneproject-0.0.1-SNAPSHOT.war",
-                "target": "."
+                "target": "./capstoneproject.war"
             }
             ]
             }"""
