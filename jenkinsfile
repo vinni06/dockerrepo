@@ -39,7 +39,7 @@ node {
   }
   
   stage('Pushing DockerImage to DockerHub') {
-   sh label: '', script: 'docker push $registry:$BUILD_NUMBER'
+   sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
   }
    
    
