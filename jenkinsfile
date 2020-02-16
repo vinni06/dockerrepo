@@ -1,4 +1,5 @@
 node {
+agent any
  try  {
   notify('Job Started') 
   
@@ -42,11 +43,9 @@ node {
   stage('Production - Provisioning Approval') {
   	input "Start provisioning the production server?"
   }
-  /*
   stage('Downstream Build -- Docker Deployment'){
 	 build 'pipe-Terraform'
 	}
-   */
 //}	-----------dir end---------  
 
  notify('Job Completed')   
@@ -54,18 +53,6 @@ node {
   notify("Error ${err}")
   currentBuild.result = 'FAILURE'
 }
-
-post
-    {
-        success
-    {
-      	 build 'pipe-Docker'
-    }
-    failure
-    {
-	//failure steps goes here 
-    }
-    }
 
 }
 
