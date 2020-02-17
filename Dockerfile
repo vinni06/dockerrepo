@@ -4,7 +4,7 @@ RUN echo 'Deploying War on Server'
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY ./petclinic.war  /usr/local/tomcat/webapps/ROOT.war
+COPY petclinic.war  /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
