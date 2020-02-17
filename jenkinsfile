@@ -33,7 +33,7 @@ node {
    sh label: '', script: 'docker-compose up -d --build'
   }
   
- ?* stage('Pushing DockerImage to DockerHub') {
+ /* stage('Pushing DockerImage to DockerHub') {
 	  docker.withRegistry('', 'charan-dockerhub' ) {
 		    sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
 		  }
