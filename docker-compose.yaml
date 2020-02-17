@@ -2,9 +2,7 @@ version: '2'
 
 
 services:
-  capstone:
+  petclinic:
     build: . 
-    image: charan253/capstoneproject:$BUILD_NUMBER
-    container_name: capstoneproject
     ports:
       - '30080:8080'
