@@ -4,7 +4,7 @@ node {
   
   environment {
     registry = "charan253/capstoneproject"
-    registryCredential = 'charandockerhub'
+    registryCredential = 'charan-dockerhub'
   }
 
      
@@ -34,7 +34,10 @@ node {
   }
   
   stage('Pushing DockerImage to DockerHub') {
-   sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
+	  docker.withRegistry('https://registry.hub.docker.com/', registryCredential ) {
+		    sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
+		  }
+   
   }
   
   stage('Production - Provisioning Approval') {
