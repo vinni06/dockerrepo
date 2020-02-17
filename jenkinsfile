@@ -34,7 +34,7 @@ node {
   }
   
   stage('Pushing DockerImage to DockerHub') {
-	  sudo docker.withRegistry('', 'charan-dockerhub' ) {
+	  docker.withRegistry('', 'charan-dockerhub' ) {
 		    sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
 		  }
    
