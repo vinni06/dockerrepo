@@ -21,7 +21,7 @@ node {
             def downloadSpec = """{
             "files": [
             {
-                "pattern": "example-repo-local/petclinic.war",
+                "pattern": "petclinic/petclinic.war",
                 "target": "./petclinic.war"
             }
             ]
