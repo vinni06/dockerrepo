@@ -4,5 +4,6 @@ version: '2'
 services:
   capstone:
     build: . 
+    image: charan253/capstoneproject
     ports:
       - '30080:8080'
