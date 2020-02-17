@@ -5,5 +5,6 @@ services:
   capstone:
     build: . 
     image: charan253/capstoneproject
+    container_name: capstoneproject
     ports:
       - '30080:8080'
