@@ -2,10 +2,7 @@ node {
  try  {
   notify('Job Started') 
   
- /* environment {
-    registry = "charan253/capstoneproject"
-    registryCredential = 'charan-dockerhub'
-  }*/
+
 
      
   stage('Git-Checkout') {
